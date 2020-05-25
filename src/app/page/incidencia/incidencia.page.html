@@ -1,0 +1,63 @@
+<ion-header no-border>
+    <ion-toolbar color="senamhi">
+        <ion-buttons slot="start">
+            <ion-button (click)="salirAlertConfirm()" fill="clear" color="light">
+                <ion-icon slot="icon-only" name="arrow-round-back"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+        <ion-title color="light">Registro de incidencia</ion-title>
+    </ion-toolbar>
+    <div class="div_header"></div>
+    <div style="width: 100%;position: absolute; top: 40px; z-index: 3;padding: 10px;">
+        <ion-card>
+            <ion-grid fixed>
+                <ion-row class="ion-align-items-center">
+                    <ion-col size="8">
+                        <ion-card-header>
+                            <ion-card-title style="font-size: 16px !important;margin: 0px"><b>Estación</b>
+                            </ion-card-title>
+                            <ion-card-title style="font-size: 20px !important;margin: 0px">
+                                <b>{{ estacion?.V_NOM_ESTA }}</b>
+                            </ion-card-title>
+                        </ion-card-header>
+                    </ion-col>
+                    <ion-col size="4">
+                        <ion-card-header>
+                            <img src="assets/img/warning.svg">
+                        </ion-card-header>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-card>
+    </div>
+</ion-header>
+
+<ion-content class="ion-padding">
+    <h1>Fecha</h1>
+    <ion-item style="border-radius: 10px 10px 10px 10px;background-color: rgb(235, 235, 235) !important;">
+        <ion-datetime cancelText="Cancelar" doneText="Aceptar" style="font-size: 25px !important;" displayFormat="DD/MM/YYYY H:mm" min="2019" max="2025" [(ngModel)]="myDateTime">
+        </ion-datetime>
+    </ion-item>
+    <h1>Tipo de incidencia</h1>
+    <ion-select (ionChange)="ionChange($event)" okText="ACEPTAR" cancelText="CANCELAR" [(ngModel)]="tipoIncid" placeholder=".: SELECCIONE :.">
+        <ion-select-option value="2">OBSERVADOR</ion-select-option>
+        <ion-select-option value="1">ESTACIÓN</ion-select-option>
+    </ion-select>
+    <h1>Incidencia</h1>
+    <ion-select okText="ACEPTAR" cancelText="CANCELAR" [(ngModel)]="Incid" placeholder=".: SELECCIONE :.">
+        <ion-select-option style="text-transform: capitalize !important;" *ngFor="let item of incidencias" [value]="item.ID_INCIDENCIA">{{ item.DESC_INCIDENCIA }}
+        </ion-select-option>
+    </ion-select>
+    <h1>Comentario</h1>
+    <ion-textarea [(ngModel)]="comentarioIncid" row="5"></ion-textarea>
+    <h1>Imagenes</h1>
+    <ion-item *ngIf="images">
+        <div class="images">
+            <div class="one-image" *ngFor="let img of images"><img src="{{img}}"></div>
+        </div>
+    </ion-item>
+    <ion-button expand="block" color="tertiary" (click)="imageActionSheet()">
+        <ion-icon slot="icon-only" name="camera"></ion-icon>
+    </ion-button>
+    <button expand="full" style="margin: 0px;font-size: 20px" class="ripple" (click)="btnRegistrar()"><b>Registrar</b></button>
+</ion-content>

@@ -1,0 +1,248 @@
+ion-content {
+  --ion-background-repeat: no-repeat;
+  --ion-background-color: #4c62ab;
+  overflow: overflow-y auto;
+  background-position: center center;
+  // --ion-background-color: #383a3e;
+}
+
+ion-item {
+  --highlight-color-valid: transparent;
+  --highlight-color-invalid: transparent;
+  --highlight-color-focused: transparent;
+  --border-color: transparent;
+  --background: transparent;
+}
+
+form {
+  top: 10%;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: 85%;
+  position: absolute;
+  height: 200px auto;
+  background: white;
+  padding: 5px;
+  border-radius: 10px;
+  animation-direction: alternate;
+  animation-name: wiki;
+  animation-duration: 0.3s;
+  animation-iteration-count: 1;
+  .button {
+    height: 45px;
+    border-radius: 10px;
+    font-size: 15px;
+  }
+}
+
+ion-input {
+  font-size: 20px;
+  padding: 5px !important;
+  margin-top: 10px !important;
+  border-radius: 10px 10px 10px 10px;
+  background: rgb(235, 235, 235);
+}
+
+ion-label {
+  color: #4c62ab !important;
+  margin-bottom: 10px auto;
+}
+
+img {
+  display: block;
+  margin: auto;
+}
+
+ion-footer {
+  &.hide {
+    display: none;
+  }
+}
+
+.invalid {
+  color: #ff6153 !important;
+  bottom: 50px !important;
+}
+.error-message .item-inner {
+  border-bottom: 0 !important;
+}
+
+ion-item .has-focus {
+  border: 2px solid #4c62ab !important;
+  border-radius: 10px 10px 10px 10px;
+}
+
+svg {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.sol {
+  position: absolute;
+  top: -15%;
+  left: 70%;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  transform: translateZ(0);
+}
+
+.clouds {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  transform: translateZ(0);
+}
+
+.cloud {
+  position: absolute;
+  top: 5%;
+  width: 300px;
+  right: 0;
+  opacity: 1;
+}
+
+.cloud.front {
+  z-index: 9;
+}
+
+.cloud.distant {
+  z-index: 1;
+}
+
+.cloud.background {
+  z-index: 1;
+}
+
+/*Cloud Sizing*/
+.cloud.smaller {
+  margin-right: 400px;
+  width: 100px;
+  margin-top: 50px;
+}
+
+.cloud.small {
+  margin-right: 200px;
+  width: 150px;
+}
+
+.cloud.big {
+  width: 400px;
+  margin-top: 50px;
+  margin-right: 150px;
+}
+
+.cloud.massive {
+  width: 500px;
+  margin-top: 20px;
+  margin-right: 0px;
+}
+
+/*Cloud: Animation*/
+.cloud {
+  -webkit-animation-name: cloud-movement;
+  -webkit-animation-timing-function: linear;
+  -webkit-animation-direction: forwards;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-duration: 8s;
+
+  -moz-animation-name: cloud-movement;
+  -moz-animation-timing-function: linear;
+  -moz-animation-direction: forwards;
+  -moz-animation-iteration-count: infinite;
+  -moz-animation-duration: 8s;
+
+  animation-name: cloud-movement;
+  animation-timing-function: linear;
+  animation-direction: forwards;
+  animation-iteration-count: infinite;
+  animation-duration: 8s;
+}
+
+.slow {
+  -webkit-animation-duration: 9.2s;
+  -moz-animation-duration: 9.2s;
+  animation-duration: 9.2s;
+}
+
+.slower {
+  -webkit-animation-duration: 11.2s;
+  -moz-animation-duration: 11.2s;
+  animation-duration: 11.2s;
+}
+
+.slowest {
+  -webkit-animation-duration: 13.5s;
+  -moz-animation-duration: 13.5s;
+  animation-duration: 13.5s;
+}
+
+.super-slow {
+  -webkit-animation-duration: 20.5s;
+  -moz-animation-duration: 20.5s;
+  animation-duration: 20.5s;
+}
+
+@-webkit-keyframes cloud-movement {
+  0% {
+    opacity: 0.1;
+    -webkit-transform: translateX(300px);
+    -moz-transform: translateX(300px);
+    transform: translateX(300px);
+  }
+  10% {
+    opacity: 0.7;
+  }
+  90% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform: translateX(-1000px);
+    -moz-transform: translateX(-1000px);
+    transform: translateX(-1000px);
+  }
+}
+
+/* Ripple effect */
+.ripple {
+  background-position: center;
+  transition: background 0.8s;
+}
+.ripple:hover {
+  background: #4c62ab radial-gradient(circle, transparent 1%, #4c62ab 1%)
+    center/15000%;
+}
+.ripple:active {
+  background-color: #435696;
+  background-size: 100%;
+  transition: background 0s;
+}
+
+/* Button style */
+button {
+  width: 100%;
+  border: none;
+  border-radius: 5px;
+  padding: 15px 20px;
+  text-transform: uppercase;
+  cursor: pointer;
+  color: white;
+  background-color: #435696;
+  box-shadow: 0 3px 3px #dadada;
+  outline: none;
+}
+
+button:disabled,
+button[disabled] {
+  cursor: not-allowed;
+  pointer-events: none;
+  // border: 1px solid #999999;
+  background-color: #bbcafa;
+  color: white;
+}

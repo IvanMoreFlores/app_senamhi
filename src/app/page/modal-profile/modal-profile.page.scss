@@ -1,0 +1,34 @@
+ion-card {
+  --background: white;
+  border-radius: 10px 10px 10px 10px;
+  // border-left: 5px solid #85b9dd !important;
+}
+
+ion-card-header {
+  padding: 5px;
+}
+
+
+ion-toolbar {
+  position: absolute;
+  top: 1px;
+  z-index: 3;
+  --background: transparent;
+  --ion-color-base: transparent !important;
+}
+
+ion-item {
+  --highlight-color-valid: transparent;
+  --highlight-color-invalid: transparent;
+  --highlight-color-focused: transparent;
+  --border-color: transparent;
+  --background: transparent;
+}
+
+.div_header {
+  height: 80px;
+  background-image: linear-gradient(#4c62ab, white);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,0 +1,86 @@
+<ion-content>
+    <div class="clouds">
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="762px" height="331px" viewBox="0 0 762 331" enable-background="new 0 0 762 331" xml:space="preserve" class="cloud big front slowest">
+      <path fill="#FFFFFF" d="M715.394,228h-16.595c0.79-5.219,1.201-10.562,1.201-16c0-58.542-47.458-106-106-106
+        c-8.198,0-16.178,0.932-23.841,2.693C548.279,45.434,488.199,0,417.5,0c-84.827,0-154.374,65.401-160.98,148.529
+        C245.15,143.684,232.639,141,219.5,141c-49.667,0-90.381,38.315-94.204,87H46.607C20.866,228,0,251.058,0,279.5
+        S20.866,331,46.607,331h668.787C741.133,331,762,307.942,762,279.5S741.133,228,715.394,228z" />
+    </svg>
+
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="762px" height="331px" viewBox="0 0 762 331" enable-background="new 0 0 762 331" xml:space="preserve" class="cloud distant smaller">
+      <path fill="#FFFFFF" d="M715.394,228h-16.595c0.79-5.219,1.201-10.562,1.201-16c0-58.542-47.458-106-106-106
+        c-8.198,0-16.178,0.932-23.841,2.693C548.279,45.434,488.199,0,417.5,0c-84.827,0-154.374,65.401-160.98,148.529
+        C245.15,143.684,232.639,141,219.5,141c-49.667,0-90.381,38.315-94.204,87H46.607C20.866,228,0,251.058,0,279.5
+        S20.866,331,46.607,331h668.787C741.133,331,762,307.942,762,279.5S741.133,228,715.394,228z" />
+    </svg>
+
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="762px" height="331px" viewBox="0 0 762 331" enable-background="new 0 0 762 331" xml:space="preserve" class="cloud small slow">
+      <path fill="#FFFFFF" d="M715.394,228h-16.595c0.79-5.219,1.201-10.562,1.201-16c0-58.542-47.458-106-106-106
+        c-8.198,0-16.178,0.932-23.841,2.693C548.279,45.434,488.199,0,417.5,0c-84.827,0-154.374,65.401-160.98,148.529
+        C245.15,143.684,232.639,141,219.5,141c-49.667,0-90.381,38.315-94.204,87H46.607C20.866,228,0,251.058,0,279.5
+        S20.866,331,46.607,331h668.787C741.133,331,762,307.942,762,279.5S741.133,228,715.394,228z" />
+    </svg>
+
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="762px" height="331px" viewBox="0 0 762 331" enable-background="new 0 0 762 331" xml:space="preserve" class="cloud distant super-slow massive">
+      <path fill="#FFFFFF" d="M715.394,228h-16.595c0.79-5.219,1.201-10.562,1.201-16c0-58.542-47.458-106-106-106
+        c-8.198,0-16.178,0.932-23.841,2.693C548.279,45.434,488.199,0,417.5,0c-84.827,0-154.374,65.401-160.98,148.529
+        C245.15,143.684,232.639,141,219.5,141c-49.667,0-90.381,38.315-94.204,87H46.607C20.866,228,0,251.058,0,279.5
+        S20.866,331,46.607,331h668.787C741.133,331,762,307.942,762,279.5S741.133,228,715.394,228z" />
+    </svg>
+
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="762px" height="331px" viewBox="0 0 762 331" enable-background="new 0 0 762 331" xml:space="preserve" class="cloud slower">
+      <path fill="#FFFFFF" d="M715.394,228h-16.595c0.79-5.219,1.201-10.562,1.201-16c0-58.542-47.458-106-106-106
+        c-8.198,0-16.178,0.932-23.841,2.693C548.279,45.434,488.199,0,417.5,0c-84.827,0-154.374,65.401-160.98,148.529
+        C245.15,143.684,232.639,141,219.5,141c-49.667,0-90.381,38.315-94.204,87H46.607C20.866,228,0,251.058,0,279.5
+        S20.866,331,46.607,331h668.787C741.133,331,762,307.942,762,279.5S741.133,228,715.394,228z" />
+    </svg>
+    </div>
+    <form [formGroup]="formularioUsuario" novalidate (ngSubmit)="login()">
+        <img src="assets/img/MINAM_Senamhi_2019-01.svg" style="margin-top: 10px;width: 100%;">
+        <ion-grid fixed>
+            <ion-row>
+                <ion-col size="12">
+                    <ion-item>
+                        <ion-label color="senamhi" position="stacked" style="font-size: 25px;text-transform: uppercase;"><b>Usuario</b></ion-label>
+                        <ion-input id="demo" formControlName="usuario" [(ngModel)]="usuario" required type="tel" maxlength="8"></ion-input>
+                        <ion-label style="margin: 0px;padding-bottom: 5px" *ngIf="formularioUsuario.get('usuario').errors && formularioUsuario.get('usuario').dirty">
+                            <ion-label style="margin: 0px;color: red !important" position="stacked" ion-text *ngIf="formularioUsuario.get('usuario').hasError('required')">Se requiere usuario</ion-label>
+                            <ion-label style="margin: 0px;color: red !important" position="stacked" ion-text *ngIf="formularioUsuario.get('usuario').hasError('minlength')">Se requiere 8 caracteres</ion-label>
+                            <ion-label style="margin: 0px;color: red !important" position="stacked" ion-text *ngIf="formularioUsuario.get('usuario').hasError('maxlength')">Se requiere 8 caracteres</ion-label>
+                        </ion-label>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col size="12">
+                    <ion-item>
+                        <ion-label position="stacked" style="font-size: 25px;text-transform: uppercase;"><b>Contraseña</b></ion-label>
+                        <ion-input formControlName="password" [(ngModel)]="password" required [type]="type">
+                            <ion-buttons style="position: absolute;right: 0.5rem;">
+                                <ion-button (click)="type_password()" color="dark">
+                                    <ion-icon [name]="icono"></ion-icon>
+                                </ion-button>
+                            </ion-buttons>
+                        </ion-input>
+                        <ion-label style="margin: 0px;padding-bottom: 5px" *ngIf="formularioUsuario.get('password').errors && formularioUsuario.get('password').dirty">
+                            <ion-label style="margin: 0px;color: red !important" position="stacked" ion-text *ngIf="formularioUsuario.get('password').hasError('required')">Se requiere contraseña</ion-label>
+                            <ion-label style="margin: 0px;color: red !important" position="stacked" ion-text *ngIf="formularioUsuario.get('password').hasError('minlength')">Se requiere minimo 8 caracteres
+                            </ion-label>
+                            <ion-label style="margin: 0px;color: red !important" position="stacked" ion-text *ngIf="formularioUsuario.get('password').hasError('maxlength')">Se requiere 8 caracteres</ion-label>
+                        </ion-label>
+                    </ion-item>
+
+                </ion-col>
+                <ion-col size="12">
+                    <p (click)="ModalRecover()" style="font-size:20px;margin: 0px;color: #00499a;" text-center><b><u>He olvidado mi
+                contraseña</u></b></p>
+                </ion-col>
+            </ion-row>
+            <ion-row padding>
+                <ion-col size="12">
+                    <button style="margin: 0px;font-size: 20px" [disabled]="!formularioUsuario.valid" class="ripple"><b>Ingresar</b></button>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </form>
+</ion-content>

@@ -1,0 +1,88 @@
+<ion-header no-border #header>
+    <ion-toolbar color="senamhi">
+        <ion-buttons slot="start">
+            <ion-button (click)="salirAlertConfirm()" fill="clear" color="light">
+                <ion-icon slot="icon-only" name="arrow-round-back"></ion-icon>
+            </ion-button>
+            <ion-title color="light">{{ titulo }}</ion-title>
+        </ion-buttons>
+    </ion-toolbar>
+    <!-- <div class="div_header"></div> -->
+    <!-- <div style="width: 100%;position: absolute; top: 40px; z-index: 3;padding: 10px;">
+        <ion-card>
+            <ion-grid fixed>
+                <ion-row class="ion-align-items-center">
+                    <ion-col size="8">
+                        <ion-card-header>
+                            <ion-card-title style="font-size: 18px !important;margin: 0px"><b>Fecha</b></ion-card-title>
+                            <ion-card-title style="font-size: 20px !important;margin: 0px"><b>{{fecha}}</b>
+                            </ion-card-title>
+                        </ion-card-header>
+                    </ion-col>
+                    <ion-col size="4">
+                        <ion-card-header>
+                            <img src="assets/img/clock.svg">
+                        </ion-card-header>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-card>
+    </div> -->
+</ion-header>
+<!-- //<ion-content style="top: 3%;" scrollEvents="true" appHideHeader [header]="header"> -->
+<ion-content>
+    <ion-list>
+        <form [formGroup]="myForm">
+            <ion-item *ngFor="let parametro of parametros ; let i = index">
+                <ion-grid fixed style="width: 100%;">
+                    <ion-row class="ion-no-padding">
+                        <ion-col size="12" class="ion-no-padding">
+                            <p style="font-size: 20px !important;white-space: initial;"><b>{{ i+1 }}).
+                                    {{ parametro?.V_NOM_PARA }}</b>
+                            </p>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row class="ion-no-padding">
+                        <ion-col size="12" class="ion-no-padding">
+                            <ion-input *ngIf="parametro.FLG_INPUT == 1" id="parametro.C_COD_PARAG + '_' + parametro.C_COD_CORRP" (ionBlur)='validacion(parametro.C_COD_PARAG,parametro.C_COD_CORRP,i+1+ "). " +parametro.V_NOM_PARA)' (ionFocus)="borrar_deficit(parametro.C_COD_PARAG,parametro.C_COD_CORRP)"
+                                type="tel" maxlength="6" [formControlName]="parametro.C_COD_PARAG + '_' + parametro.C_COD_CORRP" placeholder="Ingrese dato">
+                                <ion-buttons style="position: absolute;right: -10px;zoom: 1.5;">
+                                    <ion-button (click)="presentAlertRadio(parametro.C_COD_PARAG,parametro.C_COD_CORRP)" color="danger">
+                                        <ion-icon slot="icon-only" name="help-circle"></ion-icon>
+                                    </ion-button>
+                                </ion-buttons>
+                            </ion-input>
+                        </ion-col>
+                        <!-- <ion-col size="12" class="ion-no-padding">
+                            <ion-select [interfaceOptions]="customAlertOptions2" okText="ACEPTAR" cancelText="CANCELAR" *ngIf="parametro.FLG_INPUT == 2" 
+                            id="parametro.C_COD_PARAG + '_' + parametro.C_COD_CORRP" (ionFocus)="comboNube(parametro.C_COD_PARAG,parametro.C_COD_CORRP)" multiple="false"
+                                [formControlName]="parametro.C_COD_PARAG + '_' + parametro.C_COD_CORRP" placeholder=".: SELECIONE :.">
+                                <ion-select-option *ngFor="let nube of nubes" [value]="nube.C_COD_CORRP">
+                                    {{ nube.DESC_TIPO_NUBE }}</ion-select-option>
+                            </ion-select>
+                        </ion-col> -->
+                        <ion-col size="12" class="ion-no-padding">
+                            <ion-input *ngIf="parametro.FLG_INPUT == 2" [id]="parametro.C_COD_PARAG + '_' + parametro.C_COD_CORRP" (ionFocus)="comboNube(parametro.C_COD_PARAG,parametro.C_COD_CORRP)" type="tel" readonly maxlength="10" placeholder="Ingrese dato">
+                            </ion-input>
+                            <input type="hidden" [formControlName]="parametro.C_COD_PARAG + '_' + parametro.C_COD_CORRP">
+                        </ion-col>
+
+                        <ion-col size="12" class="ion-no-padding">
+                            <ion-select [interfaceOptions]="customAlertOptions" okText="ACEPTAR" cancelText="CANCELAR" *ngIf="parametro.FLG_INPUT == 3" id="parametro.C_COD_PARAG + '_' + parametro.C_COD_CORRP" (ionChange)="changeEnvironment($event,parametro.C_COD_PARAG,parametro.C_COD_CORRP)"
+                                (ionFocus)="comboViento()" multiple="false" [formControlName]="parametro.C_COD_PARAG + '_' + parametro.C_COD_CORRP" placeholder=".: SELECIONE :.">
+                                <ion-select-option *ngFor="let viento of vientos" [value]="viento.GRADO">
+                                    {{ viento.DESCRIPCION }}</ion-select-option>
+                            </ion-select>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </ion-item>
+            <div class="ion-padding">
+                <button [disabled]="!myForm.valid" (click)="openModal()" expand="full" style="margin: 0px;font-size: 20px" class="ripple"><b>Registrar</b></button>
+                <br>
+                <br>
+            </div>
+        </form>
+    </ion-list>
+
+</ion-content>

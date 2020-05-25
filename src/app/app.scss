@@ -1,0 +1,37 @@
+// App Styles
+// ----------------------------------------------------------------------------
+// Put style rules here that you want to apply to the entire application. These
+// styles are for the entire app and not just one component. Additionally, this
+// file can hold Sass mixins, functions, and placeholder classes to be imported
+// and used throughout the application.
+.modal-birthday-css .modal-wrapper {
+  // height: 20%;
+  // top: 80%;
+  // position: absolute;
+  // display: block;
+
+  --background: rgba(0, 0, 0, 0.4) !important;
+}
+
+.alrt_deficit {
+  .alert-radio-label {
+    white-space: normal !important;
+  }
+  white-space: normal !important;
+}
+
+.alert-radio-label.sc-ion-alert-md {
+  padding-left: unset;
+  padding-right: unset;
+  -webkit-padding-start: 52px;
+  padding-inline-start: 52px;
+  -webkit-padding-end: 26px;
+  padding-inline-end: 26px;
+  white-space: normal !important;
+}
+
+.alert-button-inner.sc-ion-alert-md {
+  -ms-flex-pack: end !important;
+  justify-content: flex-end !important;
+  height: 20px !important;
+}

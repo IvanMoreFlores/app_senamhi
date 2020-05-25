@@ -1,0 +1,77 @@
+ion-content {
+    // --background: rgba(240, 248, 255, 0.18);
+    --background: transparent;
+}
+
+ion-button {
+    height: 45px;
+    width: 300px;
+}
+
+.padre {
+    margin-top: 15% !important;
+    // background: yellow;
+    // height: 150px;
+    // /*IMPORTANTE*/
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
+}
+
+svg {
+    height: 100%;
+    width: 100%;
+}
+
+.center {
+    margin: 0 auto;
+}
+
+.large {
+    width: 50vmin;
+}
+
+.glow {
+    position: relative;
+    &::before {
+        content: "";
+        display: block;
+        border-radius: 50%;
+        width: 100%;
+        padding-bottom: 100%;
+        position: absolute;
+        top: -30%;
+        left: 0;
+        background: #ffac33;
+        z-index: -1;
+        animation: glow 4s infinite;
+    }
+    &::after {
+        content: "";
+        display: block;
+        border-radius: 50%;
+        width: 100%;
+        padding-bottom: 50%;
+        position: absolute;
+        top: 55%;
+        left: 0;
+        background: rgba(0, 0, 0, 0.15);
+        z-index: -1;
+        animation: glow 4s infinite;
+    }
+}
+
+@keyframes glow {
+    0% {
+        transform: scale(1);
+        opacity: 0.4;
+    }
+    50% {
+        transform: scale(1.25);
+        opacity: 0.2;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 0.4;
+    }
+}

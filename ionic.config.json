@@ -1,0 +1,7 @@
+{
+  "name": "app_Senamhi",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

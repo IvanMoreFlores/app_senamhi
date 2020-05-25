@@ -1,0 +1,87 @@
+<ion-header no-border>
+    <ion-toolbar color="senamhi">
+        <ion-buttons slot="start">
+            <ion-button (click)="ModalUser()" fill="clear" color="light">
+                <ion-icon slot="icon-only" name="contact"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+        <ion-buttons slot="end">
+            <ion-button (click)="ModalInfo()" fill="clear" color="light">
+                <ion-icon slot="icon-only" name="help-circle"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+    <div class="div_header"></div>
+    <div style="width: 100%;position: absolute; top: 40px; z-index: 3;padding: 10px;">
+
+        <ion-card>
+            <ion-grid fixed class="ion-no-padding">
+                <ion-row class="ion-align-items-center">
+                    <ion-col size="8">
+                        <ion-card-header>
+                            <ion-card-title style="font-size: 15px !important;margin: 0px">Receptor</ion-card-title>
+                            <ion-card-title class="ion-text-capitalize" style="font-size: 22px !important;margin: 0px">
+                                <b>{{observador}}</b>
+                            </ion-card-title>
+                        </ion-card-header>
+                    </ion-col>
+                    <ion-col size="4">
+                        <ion-card-header>
+                            <img [src]="sexo">
+                        </ion-card-header>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-card>
+    </div>
+</ion-header>
+
+<ion-content style="top: 3%;">
+    <div class="ion-padding">
+        <button style="font-size: 20px" class="ripple" (click)="onClick()" expand="block">listar mensajes</button>
+    </div>
+
+
+    <ion-card style="background: #4c62ab !important" *ngFor="let estacion of json_guardada" class="card" (click)="enviar_datos(estacion.TIPO_ENVIO,estacion)">
+        <ion-card-header class="ion-activatable">
+            <ion-ripple-effect></ion-ripple-effect>
+            <ion-grid class="ion-no-padding">
+                <ion-row>
+                    <ion-col class="ion-no-padding">
+                        <ion-card-subtitle style="font-size: 15px !important;margin: 0px;color:white;">Código estación
+                        </ion-card-subtitle>
+                        <ion-card-title style="font-size: 25px !important;margin: 0px;color:white;">
+                            <b>{{estacion?.V_COD_ESTA}}</b>
+                        </ion-card-title>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col class="ion-no-padding">
+                        <ion-card-subtitle style="font-size: 15px !important;margin: 0px;color:white;">Fecha de registro
+                        </ion-card-subtitle>
+                        <ion-card-title style="font-size: 25px !important;margin: 0px;color:white;">
+                            <b>{{estacion?.FECHA_MOVIL}}</b>
+                        </ion-card-title>
+                    </ion-col>
+                </ion-row>
+                <ion-row *ngIf="estacion.ID_HORA_SINOPTICA" class="ion-text-capitalize">
+                    <ion-col class="ion-text-capitalize" class="ion-no-padding">
+                        <ion-card-subtitle style="font-size: 15px !important;margin: 0px;color:white;">Hora sinoptica
+                        </ion-card-subtitle>
+                        <ion-card-title class="ion-text-capitalize" style="font-size: 25px !important;margin: 0px;;color:white;">
+                            <b *ngIf="estacion?.ID_HORA_SINOPTICA==='2' ">MEDICIÓN A LAS 06 HORAS</b>
+                            <b *ngIf="estacion?.ID_HORA_SINOPTICA==='3' ">MEDICIÓN A LAS 07 HORAS</b>
+                            <b *ngIf="estacion?.ID_HORA_SINOPTICA==='4' ">MEDICIÓN A LAS 08 HORAS</b>
+                            <b *ngIf="estacion?.ID_HORA_SINOPTICA==='5' ">MEDICIÓN A LAS 10 HORAS</b>
+                            <b *ngIf="estacion?.ID_HORA_SINOPTICA==='6' ">MEDICIÓN A LAS 13 HORAS</b>
+                            <b *ngIf="estacion?.ID_HORA_SINOPTICA==='7' ">MEDICIÓN A LAS 14 HORAS</b>
+                            <b *ngIf="estacion?.ID_HORA_SINOPTICA==='8' ">MEDICIÓN A LAS 16 HORAS</b>
+                            <b *ngIf="estacion?.ID_HORA_SINOPTICA==='9' ">MEDICIÓN A LAS 18 HORAS</b>
+                            <b *ngIf="estacion?.ID_HORA_SINOPTICA==='10' ">MEDICIÓN A LAS 19 HORAS</b>
+                        </ion-card-title>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-card-header>
+    </ion-card>
+</ion-content>

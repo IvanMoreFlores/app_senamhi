@@ -1,0 +1,81 @@
+<ion-header no-border>
+    <ion-toolbar color="senamhi">
+        <ion-buttons slot="start">
+            <ion-button (click)="salirAlertConfirm()" fill="clear" color="light">
+                <ion-icon slot="icon-only" name="arrow-round-back"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+        <ion-title color="light">Registro de Meteoro</ion-title>
+    </ion-toolbar>
+    <div class="div_header"></div>
+    <div style="width: 100%;position: absolute; top: 40px; z-index: 3;padding: 10px;">
+        <ion-card>
+            <ion-grid fixed>
+                <ion-row class="ion-align-items-center">
+                    <ion-col size="8">
+                        <ion-card-header>
+                            <ion-card-title style="font-size: 16px !important;margin: 0px"><b>Estación</b>
+                            </ion-card-title>
+                            <ion-card-title style="font-size: 20px !important;margin: 0px">
+                                <b>{{ estacion?.V_NOM_ESTA }}</b>
+                            </ion-card-title>
+                        </ion-card-header>
+                    </ion-col>
+                    <ion-col size="4">
+                        <ion-card-header>
+                            <img src="assets/img/clouds.svg">
+                        </ion-card-header>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-card>
+    </div>
+</ion-header>
+
+<ion-content class="ion-padding">
+    <form [formGroup]="formularioMeteoro" novalidate (ngSubmit)="openModal()">
+        <h1>Evento</h1>
+        <ion-item>
+            <ion-select formControlName="evento" (ionChange)="changeEvento($event)" class="ion-no-padding" okText="Aceptar" cancelText="Cancelar" placeholder=".: SELECIONE :.">
+                <ion-select-option *ngFor="let evento of eventos" [value]="evento.C_COR_PAREVE">
+                    {{ evento.V_DES_PAREVEN }}</ion-select-option>
+            </ion-select>
+        </ion-item>
+        <h1>Ocurrencia</h1>
+        <ion-item>
+            <ion-select formControlName="ocurrencia" (ionChange)="changeOcurrencia($event)" class="ion-no-padding" okText="Aceptar" cancelText="Cancelar" placeholder=".: SELECIONE :.">
+                <ion-select-option *ngFor="let ocurrencia of ocurrencias" [value]="ocurrencia.C_COR_OCURRE">
+                    {{ ocurrencia.V_DES_OCURRE }}</ion-select-option>
+            </ion-select>
+        </ion-item>
+        <h1>Fecha de Inicio</h1>
+        <ion-item style="border-radius: 10px 10px 10px 10px;background-color: rgb(235, 235, 235) !important;" (click)="showDateTimepicker_inicio_fecha()">
+            <ion-input formControlName="inicio_fecha" readonly></ion-input>
+            <!-- <ion-datetime formControlName="inicio" cancelText="Cancelar" doneText="Aceptar" style="font-size: 25px !important;" displayFormat="DD/MM/YYYY H:mm" min="2019" max="2025">
+            </ion-datetime> -->
+        </ion-item>
+        <h1>Hora de Inicio</h1>
+        <ion-item style="border-radius: 10px 10px 10px 10px;background-color: rgb(235, 235, 235) !important;" (click)="btn_incd_inicio()">
+            <ion-input formControlName="inicio_hora" readonly></ion-input>
+            <!-- <ion-datetime formControlName="inicio" cancelText="Cancelar" doneText="Aceptar" style="font-size: 25px !important;" displayFormat="DD/MM/YYYY H:mm" min="2019" max="2025">
+            </ion-datetime> -->
+        </ion-item>
+        <h1>Fecha de Fin</h1>
+        <ion-item style="border-radius: 10px 10px 10px 10px;background-color: rgb(235, 235, 235) !important;" (click)="showDateTimepicker_fin_fecha()">
+            <ion-input formControlName="fin_fecha" readonly></ion-input>
+            <!-- <ion-datetime formControlName="fin" cancelText="Cancelar" doneText="Aceptar" style="font-size: 25px !important;" displayFormat="DD/MM/YYYY H:mm" min="2019" max="2025">
+            </ion-datetime> -->
+        </ion-item>
+        <h1>Hora de Fin</h1>
+        <ion-item style="border-radius: 10px 10px 10px 10px;background-color: rgb(235, 235, 235) !important;" (click)="btn_incd_fin()">
+            <ion-input formControlName="fin_hora" readonly></ion-input>
+            <!-- <ion-datetime formControlName="fin" cancelText="Cancelar" doneText="Aceptar" style="font-size: 25px !important;" displayFormat="DD/MM/YYYY H:mm" min="2019" max="2025">
+            </ion-datetime> -->
+        </ion-item>
+        <div class="ion-padding">
+            <button [disabled]="!formularioMeteoro.valid" expand="full" style="margin: 0px;font-size: 20px" class="ripple"><b>Registrar</b></button>
+            <br>
+            <br>
+        </div>
+    </form>
+</ion-content>
