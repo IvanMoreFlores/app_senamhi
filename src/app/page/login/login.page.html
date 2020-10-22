@@ -42,7 +42,7 @@
                 <ion-col size="12">
                     <ion-item>
                         <ion-label color="senamhi" position="stacked" style="font-size: 25px;text-transform: uppercase;"><b>Usuario</b></ion-label>
-                        <ion-input id="demo" formControlName="usuario" [(ngModel)]="usuario" required type="tel" maxlength="8"></ion-input>
+                        <ion-input (keydown)="maximoLent($event)"  id="demo" formControlName="usuario" [(ngModel)]="usuario" required type="number" maxlength="8"></ion-input>
                         <ion-label style="margin: 0px;padding-bottom: 5px" *ngIf="formularioUsuario.get('usuario').errors && formularioUsuario.get('usuario').dirty">
                             <ion-label style="margin: 0px;color: red !important" position="stacked" ion-text *ngIf="formularioUsuario.get('usuario').hasError('required')">Se requiere usuario</ion-label>
                             <ion-label style="margin: 0px;color: red !important" position="stacked" ion-text *ngIf="formularioUsuario.get('usuario').hasError('minlength')">Se requiere 8 caracteres</ion-label>
@@ -55,7 +55,7 @@
                 <ion-col size="12">
                     <ion-item>
                         <ion-label position="stacked" style="font-size: 25px;text-transform: uppercase;"><b>Contraseña</b></ion-label>
-                        <ion-input formControlName="password" [(ngModel)]="password" required [type]="type">
+                        <ion-input  inputmode="numeric" formControlName="password" [(ngModel)]="password" required [type]="type">
                             <ion-buttons style="position: absolute;right: 0.5rem;">
                                 <ion-button (click)="type_password()" color="dark">
                                     <ion-icon [name]="icono"></ion-icon>

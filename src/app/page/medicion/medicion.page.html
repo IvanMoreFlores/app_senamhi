@@ -44,10 +44,16 @@
                     </ion-row>
                     <ion-row class="ion-no-padding">
                         <ion-col size="12" class="ion-no-padding">
-                            <ion-input *ngIf="parametro.FLG_INPUT == 1" id="parametro.C_COD_PARAG + '_' + parametro.C_COD_CORRP" (ionBlur)='validacion(parametro.C_COD_PARAG,parametro.C_COD_CORRP,i+1+ "). " +parametro.V_NOM_PARA)' (ionFocus)="borrar_deficit(parametro.C_COD_PARAG,parametro.C_COD_CORRP)"
-                                type="tel" maxlength="6" [formControlName]="parametro.C_COD_PARAG + '_' + parametro.C_COD_CORRP" placeholder="Ingrese dato">
+                            <ion-input tabindex="{{ i+1 }}" *ngIf="parametro.FLG_INPUT == 1"
+                                [id]="parametro.C_COD_PARAG + '_' + parametro.C_COD_CORRP"
+                                name="parametro.C_COD_PARAG + '_' + parametro.C_COD_CORRP"
+                                (ionBlur)='validacion(i+1,parametro.C_COD_PARAG,parametro.C_COD_CORRP,i+1+ "). " +parametro.V_NOM_PARA)'
+                                (ionFocus)="borrar_deficit(parametro.C_COD_PARAG,parametro.C_COD_CORRP)" type="tel"
+                                maxlength="7" [formControlName]="parametro.C_COD_PARAG + '_' + parametro.C_COD_CORRP"
+                                placeholder="Ingrese dato">
                                 <ion-buttons style="position: absolute;right: -10px;zoom: 1.5;">
-                                    <ion-button (click)="presentAlertRadio(parametro.C_COD_PARAG,parametro.C_COD_CORRP)" color="danger">
+                                    <ion-button (click)="presentAlertRadio(parametro.C_COD_PARAG,parametro.C_COD_CORRP)"
+                                        color="danger">
                                         <ion-icon slot="icon-only" name="help-circle"></ion-icon>
                                     </ion-button>
                                 </ion-buttons>
@@ -62,14 +68,25 @@
                             </ion-select>
                         </ion-col> -->
                         <ion-col size="12" class="ion-no-padding">
-                            <ion-input *ngIf="parametro.FLG_INPUT == 2" [id]="parametro.C_COD_PARAG + '_' + parametro.C_COD_CORRP" (ionFocus)="comboNube(parametro.C_COD_PARAG,parametro.C_COD_CORRP)" type="tel" readonly maxlength="10" placeholder="Ingrese dato">
+                            <ion-input name="parametro.C_COD_PARAG + '_' + parametro.C_COD_CORRP" tabindex="{{ i+1 }}"
+                                (ionBlur)="toUnicode($event)" *ngIf="parametro.FLG_INPUT == 2"
+                                [id]="parametro.C_COD_PARAG + '_' + parametro.C_COD_CORRP"
+                                (ionFocus)="comboNube(parametro.C_COD_PARAG,parametro.C_COD_CORRP)" type="tel" readonly
+                                maxlength="10" placeholder="Ingrese dato">
                             </ion-input>
-                            <input type="hidden" [formControlName]="parametro.C_COD_PARAG + '_' + parametro.C_COD_CORRP">
+                            <input type="hidden"
+                                [formControlName]="parametro.C_COD_PARAG + '_' + parametro.C_COD_CORRP">
                         </ion-col>
 
                         <ion-col size="12" class="ion-no-padding">
-                            <ion-select [interfaceOptions]="customAlertOptions" okText="ACEPTAR" cancelText="CANCELAR" *ngIf="parametro.FLG_INPUT == 3" id="parametro.C_COD_PARAG + '_' + parametro.C_COD_CORRP" (ionChange)="changeEnvironment($event,parametro.C_COD_PARAG,parametro.C_COD_CORRP)"
-                                (ionFocus)="comboViento()" multiple="false" [formControlName]="parametro.C_COD_PARAG + '_' + parametro.C_COD_CORRP" placeholder=".: SELECIONE :.">
+                            <ion-select name="parametro.C_COD_PARAG + '_' + parametro.C_COD_CORRP" tabindex="{{ i+1 }}"
+                                (ionBlur)="toUnicode($event)" [interfaceOptions]="customAlertOptions" okText="ACEPTAR"
+                                cancelText="CANCELAR" *ngIf="parametro.FLG_INPUT == 3"
+                                [id]="parametro.C_COD_PARAG + '_' + parametro.C_COD_CORRP"
+                                (ionChange)="changeEnvironment($event,parametro.C_COD_PARAG,parametro.C_COD_CORRP)"
+                                (ionFocus)="comboViento()" multiple="false"
+                                [formControlName]="parametro.C_COD_PARAG + '_' + parametro.C_COD_CORRP"
+                                placeholder=".: SELECIONE :.">
                                 <ion-select-option *ngFor="let viento of vientos" [value]="viento.GRADO">
                                     {{ viento.DESCRIPCION }}</ion-select-option>
                             </ion-select>
@@ -78,7 +95,8 @@
                 </ion-grid>
             </ion-item>
             <div class="ion-padding">
-                <button [disabled]="!myForm.valid" (click)="openModal()" expand="full" style="margin: 0px;font-size: 20px" class="ripple"><b>Registrar</b></button>
+                <button [disabled]="!myForm.valid" (click)="openModal()" expand="full"
+                    style="margin: 0px;font-size: 20px" class="ripple"><b>Registrar</b></button>
                 <br>
                 <br>
             </div>

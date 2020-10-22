@@ -9,7 +9,7 @@ import { Http } from '@angular/http';
 })
 export class HomeService {
   datos: any;
-  ip = 'http://200.10.71.216/API_SENAMHI/App_movil/';
+  ip = 'http://190.119.131.24/API_SENAMHI/App_movil/';
   api_updatePassword: string = this.ip + 'updatePassword';
   api_getEstacion: string = this.ip + 'getEstacion';
   api_getHora: string = this.ip + 'getHora';

@@ -41,7 +41,7 @@ export class LoginPage implements OnInit {
     public NvCtrl: NavController,
   ) {
     this.formularioUsuario = this.fb.group({
-      usuario: ['', [Validators.required]],
+      usuario: ['', [Validators.required, Validators.maxLength(8)]],
       password: ['', [Validators.required]],
     });
   }
@@ -146,12 +146,12 @@ export class LoginPage implements OnInit {
   }
 
   type_password() {
-    if (this.type === 'text') {
+    if (this.type === 'number') {
       this.icono = 'eye';
       this.type = 'password';
     } else {
       this.icono = 'eye-off';
-      this.type = 'text';
+      this.type = 'number';
     }
   }
 
@@ -162,6 +162,30 @@ export class LoginPage implements OnInit {
       cssClass: 'modal-birthday-css',
     });
     return await modal.present();
+  }
+
+  maximoLent(value) {
+    //manually launch change detection
+    console.log(value.srcElement.value.length);
+    if (value.srcElement.value.length > 7) {
+      console.log('Mayor que 8');
+      this.usuario = value.srcElement.value.substring(0, value.srcElement.value.length - (value.srcElement.value.length - 7));
+      // this.usuario = value.srcElement.value.substring(0, 8);
+      // this.usuario = value.srcElement.value.slice(0, 8);
+    }
+
+  }
+
+  maximoLent3(event) {
+    console.log(event);
+    console.log(event.srcElement);
+    console.log(event.srcElement.value);
+    console.log(event.srcElement.value.length);
+    if (event.which < 48 || event.which > 57 || event.srcElement.value.length == 8) {
+      alert(event.srcElement.value.length);
+      event.srcElement.value.slice(0, 8);
+      // return false;
+    }
   }
 
   async GPSOn() {

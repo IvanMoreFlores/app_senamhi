@@ -9,7 +9,7 @@ import { map } from 'rxjs/operators';
 
 export class LoginService {
   datos: any;
-  ip = 'http://200.10.71.216/API_SENAMHI/App_movil/';
+  ip = 'http://190.119.131.24/API_SENAMHI/App_movil/';
   // tslint:disable-next-line: variable-name
   api_login: string = this.ip + 'getLogin';
   // tslint:disable-next-line: variable-name

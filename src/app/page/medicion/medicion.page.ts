@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild, Renderer2 } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IonRouterOutlet, LoadingController, NavController, Platform } from '@ionic/angular';
@@ -43,6 +43,8 @@ export class MedicionPage implements OnInit, OnDestroy {
   header;
   numeros = [];
 
+  array_parametros = [];
+
   @ViewChild(IonRouterOutlet) routerOutlet: IonRouterOutlet;
 
   constructor(
@@ -60,6 +62,7 @@ export class MedicionPage implements OnInit, OnDestroy {
     private networkService: NetworkService,
     public modalController: ModalController,
     public toastCtrl: ToastController,
+    public renderer: Renderer2
   ) {
     console.log('IVAN MORE FLORES');
     this.sqlite.getNumero(1).then((data) => {
@@ -79,6 +82,25 @@ export class MedicionPage implements OnInit, OnDestroy {
     this.getParametroOffline();
   }
 
+  toUnicode(elmnt) {
+    // console.log(this.myForm);
+    // console.log(elmnt);
+    // console.log(elmnt.srcElement.id);
+
+    // var next;
+    // if (elmnt.srcElement.value.length) {
+    //   next = elmnt.srcElement.tabIndex + 1;
+    //   //look for the fields with the next tabIndex
+    //   var f = elmnt.form;
+    //   for (var i = 0; i < f.elements.length; i++) {
+    //     if (next <= f.elements[i].tabIndex) {
+    //       f.elements[i].focus();
+    //       break;
+    //     }
+    //   }
+    // }
+  }
+
   async ngOnInit() {
     console.log('Esta en medicion ngOnInit');
     await this.getDeficitOnline();
@@ -96,6 +118,7 @@ export class MedicionPage implements OnInit, OnDestroy {
     this.sqlite.getParametro(this.activatedRoute.snapshot.paramMap.get('id'), this.activatedRoute.snapshot.paramMap.get('id_hora')).then(async (result) => {
       console.log('Esta en getParametro result');
       console.log(result);
+      this.array_parametros = result;
       console.log(result.length);
       if (result.length > 0) {
         console.log('result.length > 0');
@@ -223,8 +246,15 @@ export class MedicionPage implements OnInit, OnDestroy {
 
   /// -------- VALIDACIONES ------ ///
 
-  validacion(C_COD_PARAG, C_COD_CORRP, V_NOM_PARA) {
-    let codigo = C_COD_PARAG + '_' + C_COD_CORRP;
+  validacion(N_ARRAY, C_COD_PARAG, C_COD_CORRP, V_NOM_PARA) {
+    // this.array_parametros
+    console.log(this.array_parametros[N_ARRAY]);
+    console.log(N_ARRAY);
+    console.log(C_COD_PARAG);
+    console.log(C_COD_CORRP);
+    console.log(V_NOM_PARA);
+    console.log(this.array_parametros[N_ARRAY].C_COD_PARAG);
+    let codigo = this.array_parametros[N_ARRAY].C_COD_PARAG + '_' + this.array_parametros[N_ARRAY].C_COD_CORRP;
     let data;
     const valor = this.myForm.get(C_COD_PARAG + '_' + C_COD_CORRP).value;
     console.log(parseInt(valor));
@@ -241,13 +271,31 @@ export class MedicionPage implements OnInit, OnDestroy {
             console.log(valor + ' es mayor que ' + parseInt(data.LIMIT_SUPERIOR));
             this.mensaje_validacion('El valor agregado es superior a ' + parseInt(data.LIMIT_SUPERIOR), C_COD_PARAG + '_' + C_COD_CORRP, V_NOM_PARA);
           }
+          
         }
       }).catch((err) => {
         console.log(err);
       });
-    } else {
-
     }
+    this.moveFocus(codigo);
+  }
+
+  moveFocus(nextElement) {
+    console.log('wwww');
+    console.log(nextElement);
+    console.log(document.getElementById(nextElement));
+    if (document.getElementById(nextElement)) {
+      console.log('sssss');
+      console.log(document.getElementById(nextElement));
+      document.getElementById(nextElement).focus();
+    }
+
+    // console.log((document.activeElement as HTMLElement));
+    // console.log(nextElement);
+    // const element = this.renderer.selectRootElement('#' + nextElement);
+    // console.log(element);
+    //e.srcElement.value
+    // this.myForm.controls[nextElement].focus();
   }
 
   async mensaje_validacion(mensaje, codigo, V_NOM_PARA) {
@@ -261,6 +309,12 @@ export class MedicionPage implements OnInit, OnDestroy {
         text: 'ACEPTAR',
         handler: (blah) => {
           this.myForm.controls[codigo].setValue('');
+          // console.log(C_COD_PARAG + '_' + C_COD_CORRP);
+          // let varilla = C_COD_PARAG + '_' + C_COD_CORRP;
+          // document.querySelector(codigo).focus()
+          console.log(codigo);
+          console.log(document.getElementsByName(codigo));
+          // document.getElementById(codigo).focus();
           console.log('Confirm Cancel: blah' + blah);
         },
       }],
@@ -527,6 +581,7 @@ export class MedicionPage implements OnInit, OnDestroy {
   }
 
   async comboNube(C_COD_PARAG, C_COD_CORRP) {
+    alert();
     this.customAlertOptions2 = {
       header: 'Formas de nubes',
       backdropDismiss: false,

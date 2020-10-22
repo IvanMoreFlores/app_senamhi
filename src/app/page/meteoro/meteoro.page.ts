@@ -520,7 +520,7 @@ export class MeteoroPage implements OnInit {
           mode: 'date',
           androidTheme: this.datePicker.ANDROID_THEMES.THEME_HOLO_LIGHT,
           doneButtonLabel: "Save Date & Time",
-          is24Hour: false
+          is24Hour: true
         }).then(
           dateTime => {
             this.formularioMeteoro.controls['inicio_fecha'].setValue(dateTime.toLocaleDateString('ja-JP', this.options_fecha).split('/').join('-'));
@@ -619,7 +619,7 @@ export class MeteoroPage implements OnInit {
       mode: 'time',
       androidTheme: this.datePicker.ANDROID_THEMES.THEME_HOLO_LIGHT,
       doneButtonLabel: "Save Date & Time",
-      is24Hour: false
+      is24Hour: true
     }).then(
       dateTime => {
         this.cabecera.FLG_HORA_INICIO = 1;
@@ -637,7 +637,7 @@ export class MeteoroPage implements OnInit {
           mode: 'date',
           androidTheme: this.datePicker.ANDROID_THEMES.THEME_HOLO_LIGHT,
           doneButtonLabel: "Save Date & Time",
-          is24Hour: false
+          is24Hour: true
         }).then(
           dateTime => {
             this.formularioMeteoro.controls['fin_fecha'].setValue(dateTime.toLocaleDateString('ja-JP', this.options_fecha).split('/').join('-'));
@@ -684,7 +684,7 @@ export class MeteoroPage implements OnInit {
       mode: 'time',
       androidTheme: this.datePicker.ANDROID_THEMES.THEME_HOLO_LIGHT,
       doneButtonLabel: "Save Date & Time",
-      is24Hour: false
+      is24Hour: true
     }).then(
       dateTime => {
         this.cabecera.FLG_HORA_FIN = 1;
